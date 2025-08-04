@@ -1,0 +1,50 @@
+{
+  "name": "ai-cursor-website",
+  "version": "1.0.0",
+  "description": "AI Cursor - Intelligent website generator powered by artificial intelligence",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -o",
+    "dev": "npx live-server --port=3000 --open=/",
+    "build": "npm run optimize",
+    "optimize": "npx html-minifier --collapse-whitespace --remove-comments --minify-css --minify-js index.html -o dist/index.html && npx clean-css-cli styles.css -o dist/styles.css && npx uglify-js script.js -o dist/script.js",
+    "deploy": "npm run build && npx gh-pages -d dist",
+    "lint": "npx eslint script.js",
+    "format": "npx prettier --write *.html *.css *.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "ai",
+    "cursor",
+    "website-generator",
+    "artificial-intelligence",
+    "web-development",
+    "responsive-design",
+    "modern-ui"
+  ],
+  "author": "AI Cursor Team",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.2",
+    "eslint": "^8.57.0",
+    "gh-pages": "^6.1.1",
+    "html-minifier": "^4.0.0",
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2",
+    "prettier": "^3.2.5",
+    "uglify-js": "^3.17.4"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/ai-cursor-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/ai-cursor-website/issues"
+  },
+  "homepage": "https://your-username.github.io/ai-cursor-website"
+}
