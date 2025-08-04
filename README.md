@@ -1,169 +1,218 @@
-# AI Cursor Website
+# Vehicle Booking System
 
-A modern, responsive website for AI Cursor - an intelligent website generator powered by artificial intelligence. This project showcases beautiful UI/UX design, smooth animations, and interactive features.
+A modern, responsive vehicle booking system built with Laravel 11, featuring customer booking management and comprehensive admin panel.
 
 ## 🚀 Features
 
-- **Modern Design**: Clean, professional design with gradient accents and smooth animations
-- **Responsive Layout**: Fully responsive design that works on all devices and screen sizes
-- **Interactive Elements**: Smooth scrolling navigation, animated statistics, and hover effects
-- **Contact Form**: Functional contact form with validation and notifications
-- **Mobile-First**: Optimized for mobile devices with hamburger menu navigation
-- **Performance Optimized**: Fast loading times with optimized assets
-- **Accessibility**: Semantic HTML and ARIA labels for better accessibility
+### Customer Features
+- **Browse Vehicles**: View available vehicles by type with detailed information
+- **Advanced Search**: Filter vehicles by type, price, seats, and availability dates
+- **Easy Booking**: Create, view, update, and cancel bookings
+- **Booking Management**: Track booking status and history
+- **Responsive Design**: Works perfectly on all devices
+
+### Admin Features
+- **Dashboard**: Comprehensive overview with statistics and charts
+- **Vehicle Management**: Full CRUD operations for vehicles and vehicle types
+- **Booking Management**: Manage all customer bookings with status updates
+- **User Management**: View and manage customer accounts
+- **Reports**: Export booking data and generate reports
+
+### Technical Features
+- **Modern UI/UX**: Built with Bootstrap 5 and custom CSS
+- **Responsive Design**: Mobile-first approach
+- **Real-time Validation**: Client-side and server-side validation
+- **AJAX Functionality**: Smooth user experience with AJAX requests
+- **Security**: Role-based access control and CSRF protection
+- **Database**: MySQL with proper relationships and constraints
 
 ## 🛠️ Technology Stack
 
-- **HTML5**: Semantic markup with proper meta tags
-- **CSS3**: Modern CSS with Flexbox, Grid, and custom animations
-- **JavaScript**: Vanilla JavaScript for interactivity and functionality
-- **Font Awesome**: Icons for enhanced visual appeal
-- **Google Fonts**: Inter font family for modern typography
+- **Backend**: Laravel 11 (PHP 8.2+)
+- **Frontend**: Bootstrap 5, Custom CSS, Vanilla JavaScript
+- **Database**: MySQL 8.0+
+- **Icons**: Font Awesome 6
+- **Fonts**: Google Fonts (Inter)
+
+## 📋 Requirements
+
+- PHP 8.2 or higher
+- Composer
+- MySQL 8.0 or higher
+- Node.js & NPM (optional, for asset compilation)
+- Web server (Apache/Nginx)
+
+## 🚀 Installation
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/vehicle-booking-system.git
+cd vehicle-booking-system
+```
+
+### 2. Install Dependencies
+```bash
+composer install
+```
+
+### 3. Environment Configuration
+```bash
+cp .env.example .env
+```
+
+Edit the `.env` file and configure your database:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=vehicle_booking
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+### 4. Generate Application Key
+```bash
+php artisan key:generate
+```
+
+### 5. Create Database
+Create a MySQL database named `vehicle_booking` (or whatever you specified in `.env`)
+
+### 6. Run Migrations
+```bash
+php artisan migrate
+```
+
+### 7. Seed Database (Optional)
+```bash
+php artisan db:seed
+```
+
+This will create:
+- Admin user: `admin@vehiclerent.com` / `password`
+- Sample customers: `john@example.com` / `password`
+- Sample vehicle types and vehicles
+- Sample bookings
+
+### 8. Create Storage Link
+```bash
+php artisan storage:link
+```
+
+### 9. Start Development Server
+```bash
+php artisan serve
+```
+
+Visit `http://localhost:8000` to access the application.
 
 ## 📁 Project Structure
 
 ```
-ai-cursor-website/
-├── index.html          # Main HTML file
-├── styles.css          # CSS styles and animations
-├── script.js           # JavaScript functionality
-├── package.json        # Project configuration and scripts
-└── README.md          # Project documentation
+vehicle-booking-system/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── HomeController.php
+│   │   ├── Customer/
+│   │   │   └── BookingController.php
+│   │   └── Admin/
+│   │       ├── DashboardController.php
+│   │       ├── VehicleController.php
+│   │       ├── VehicleTypeController.php
+│   │       └── BookingController.php
+│   ├── Models/
+│   │   ├── User.php
+│   │   ├── Vehicle.php
+│   │   ├── VehicleType.php
+│   │   └── Booking.php
+│   └── Http/Middleware/
+│       └── AdminMiddleware.php
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── resources/
+│   └── views/
+│       ├── layouts/
+│       ├── auth/
+│       ├── customer/
+│       └── admin/
+├── public/
+│   ├── css/
+│   ├── js/
+│   └── images/
+└── routes/
+    └── web.php
 ```
 
-## 🚀 Quick Start
+## 🎯 Usage
 
-### Prerequisites
+### Customer Workflow
+1. **Browse Vehicles**: Visit the homepage to see featured vehicles and types
+2. **Search**: Use the search functionality to find vehicles by criteria
+3. **Register/Login**: Create an account or login to make bookings
+4. **Book Vehicle**: Select dates and create a booking
+5. **Manage Bookings**: View, edit, or cancel bookings from the dashboard
 
-- Node.js (version 14 or higher)
-- npm or yarn package manager
+### Admin Workflow
+1. **Login**: Access admin panel with admin credentials
+2. **Dashboard**: View system statistics and recent activities
+3. **Manage Vehicle Types**: Add/edit/delete vehicle categories
+4. **Manage Vehicles**: Add/edit/delete individual vehicles
+5. **Manage Bookings**: View all bookings and update their status
+6. **Reports**: Export booking data for analysis
 
-### Installation
+## 🔐 Default Credentials
 
-1. Clone the repository:
-```bash
-git clone https://github.com/your-username/ai-cursor-website.git
-cd ai-cursor-website
-```
+After running the seeder:
 
-2. Install dependencies:
-```bash
-npm install
-```
+**Admin Account:**
+- Email: `admin@vehiclerent.com`
+- Password: `password`
 
-3. Start the development server:
-```bash
-npm run dev
-```
-
-The website will open in your default browser at `http://localhost:3000`.
-
-## 📜 Available Scripts
-
-- `npm start` - Start a simple HTTP server
-- `npm run dev` - Start development server with live reload
-- `npm run build` - Build optimized version for production
-- `npm run deploy` - Deploy to GitHub Pages
-- `npm run lint` - Lint JavaScript files
-- `npm run format` - Format code with Prettier
+**Customer Account:**
+- Email: `john@example.com`
+- Password: `password`
 
 ## 🎨 Customization
 
-### Colors
+### Styling
+- Main CSS file: `public/css/app.css`
+- Color scheme can be modified in CSS custom properties
+- Bootstrap variables can be overridden
 
-The website uses a consistent color scheme defined in CSS custom properties. Main colors:
+### Configuration
+- Vehicle types and features can be customized in the seeder
+- Booking rules can be modified in the models
+- Email templates can be customized in resources/views
 
-- Primary: `#667eea` (Blue gradient start)
-- Secondary: `#764ba2` (Purple gradient end)
-- Success: `#27ca3f`
-- Error: `#ff5f56`
-- Warning: `#ffbd2e`
+## 📱 Responsive Design
 
-### Fonts
+The application is fully responsive and optimized for:
+- Desktop (1200px+)
+- Tablet (768px - 1199px)
+- Mobile (< 768px)
 
-The website uses the Inter font family from Google Fonts. You can change it by updating the font import in the HTML head section.
+## 🔒 Security Features
 
-### Content
-
-Update the content by modifying the HTML in `index.html`. The structure is well-organized with semantic sections:
-
-- Hero section
-- Features section
-- Demo section
-- Pricing section
-- Contact section
-- Footer
-
-## 🌟 Key Features Explained
-
-### Responsive Navigation
-
-- Fixed navigation bar with smooth scroll-to-section functionality
-- Mobile hamburger menu for smaller screens
-- Active link highlighting
-
-### Hero Section
-
-- Animated code editor mockup
-- Gradient text effects
-- Call-to-action buttons
-- Floating background elements
-
-### Interactive Elements
-
-- Hover effects on cards and buttons
-- Animated statistics counters
-- Form validation with custom notifications
-- Smooth scrolling between sections
-
-### Contact Form
-
-- Client-side validation
-- Custom notification system
-- Responsive design
-- Accessibility features
+- CSRF protection on all forms
+- Role-based access control (Admin/Customer)
+- Input validation and sanitization
+- SQL injection prevention through Eloquent ORM
+- XSS protection through Blade templating
 
 ## 🚀 Deployment
 
-### GitHub Pages
+### Production Setup
+1. Set `APP_ENV=production` in `.env`
+2. Set `APP_DEBUG=false` in `.env`
+3. Configure proper database credentials
+4. Set up web server (Apache/Nginx)
+5. Configure SSL certificate
+6. Set up automated backups
+7. Configure email settings for notifications
 
-1. Update the repository URL in `package.json`
-2. Run the deployment script:
-```bash
-npm run deploy
-```
-
-### Other Hosting Platforms
-
-The built files in the `dist` folder can be deployed to any static hosting service:
-
-- Netlify
-- Vercel
-- AWS S3
-- Firebase Hosting
-
-## 🔧 Browser Support
-
-This website supports all modern browsers:
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## 📱 Mobile Optimization
-
-- Mobile-first responsive design
-- Touch-friendly navigation
-- Optimized images and assets
-- Fast loading on mobile networks
-
-## 🎯 Performance
-
-- Optimized CSS and JavaScript
-- Efficient animations using CSS transforms
-- Lazy loading for better performance
-- Minimal external dependencies
+### Web Server Configuration
+Ensure your web server points to the `public` directory and has proper rewrite rules for Laravel.
 
 ## 🤝 Contributing
 
@@ -173,24 +222,71 @@ This website supports all modern browsers:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
+## 📝 API Documentation
+
+The system includes API endpoints for AJAX functionality:
+
+- `POST /api/check-availability` - Check vehicle availability
+- `GET /api/vehicles/{vehicle}/booking-form` - Get booking form
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Database Connection Error:**
+- Verify database credentials in `.env`
+- Ensure MySQL service is running
+- Check if database exists
+
+**Permission Errors:**
+- Set proper permissions: `chmod -R 755 storage bootstrap/cache`
+- Ensure web server has write access to storage and cache directories
+
+**Missing Dependencies:**
+- Run `composer install` to install PHP dependencies
+- Clear cache: `php artisan cache:clear`
+
+## 📊 Database Schema
+
+### Main Tables
+- `users` - Customer and admin accounts
+- `vehicle_types` - Categories of vehicles (Car, SUV, etc.)
+- `vehicles` - Individual vehicle records
+- `bookings` - Customer booking records
+
+### Relationships
+- User has many Bookings
+- Vehicle belongs to VehicleType
+- Vehicle has many Bookings
+- Booking belongs to User and Vehicle
+
+## 🔄 Updates
+
+To update the application:
+1. Pull latest changes: `git pull origin main`
+2. Update dependencies: `composer update`
+3. Run migrations: `php artisan migrate`
+4. Clear cache: `php artisan cache:clear`
+
+## 📞 Support
+
+For support and questions:
+- Create an issue on GitHub
+- Email: support@vehiclerent.com
+- Documentation: Check the wiki section
+
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- Font Awesome for the icons
-- Google Fonts for the typography
-- CSS Gradient for inspiration on gradient designs
-
-## 📞 Support
-
-If you have any questions or need help with the project, please:
-
-1. Check the [Issues](https://github.com/your-username/ai-cursor-website/issues) page
-2. Create a new issue if your question isn't already answered
-3. Contact the development team
+- Laravel Framework Team
+- Bootstrap Team
+- Font Awesome
+- Google Fonts
+- All contributors and testers
 
 ---
 
-**Built with ❤️ by the AI Cursor Team**
+**Built with ❤️ using Laravel 11**
